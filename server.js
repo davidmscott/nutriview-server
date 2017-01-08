@@ -29,9 +29,7 @@ app.use((req, res, next) => {
   next();
 });
 
-var apiKey = '9c762c838016043633065dcee0261687';
-var apiId = 'ab3d9cfa';
-var baseUrl = `https://api.edamam.com/api/nutrition-data?app_id=${apiId}&app_key=${apiKey}&ingr=`;
+var baseUrl = `https://api.edamam.com/api/nutrition-data?app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&ingr=`;
 
 app.get('/food', authenticate, (req, res) => {
 	var term = req._parsedUrl.query;
