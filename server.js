@@ -15,19 +15,19 @@ const app = express();
 
 var port = process.env.PORT;
 
-app.use(express.static(__dirname));
-
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-app.use(bodyParser.json());
-
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-auth");
   res.header("Access-Control-Expose-Headers", "x-auth");
   next();
 });
+
+app.use(express.static(__dirname));
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
 var baseUrl = `https://api.edamam.com/api/nutrition-data?app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&ingr=`;
 
