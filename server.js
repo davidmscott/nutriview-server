@@ -1,7 +1,7 @@
 require('./config/config.js');
 
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 const bodyParser = require('body-parser');
 const request = require('request');
 const _ = require('lodash');
@@ -16,15 +16,15 @@ const app = express();
 
 var port = process.env.PORT;
 
-app.use(cors());
+// app.use(cors());
 
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-auth");
-//   res.header("Access-Control-Expose-Headers", "x-auth");
-//   next();
-// });
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-auth");
+  res.header("Access-Control-Expose-Headers", "x-auth");
+  next();
+});
 
 app.use(express.static(__dirname));
 
