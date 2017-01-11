@@ -1,7 +1,6 @@
 require('./config/config.js');
 
 const express = require('express');
-const cors = require('cors');
 const bodyParser = require('body-parser');
 const request = require('request');
 const _ = require('lodash');
@@ -23,8 +22,6 @@ app.use((req, res, next) => {
   res.header("Access-Control-Expose-Headers", "x-auth");
   next();
 });
-
-app.use('*', cors());
 
 app.use(express.static(__dirname));
 
